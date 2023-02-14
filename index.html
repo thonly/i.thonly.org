@@ -3,15 +3,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Kiitos</title>
         <link rel="stylesheet" href="index.css">
+        <script src="//unpkg.com/@ungap/custom-elements/es.js"></script>
         <script src="index.js" type="module"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-532EHXLL26"></script>
     </head>
-    <body>
+    <body is="tl-provider">
         <header>
-            
+            <button>Connect</button>
         </header>
-        <main>
-            
+        <main data-account="corporate">
+            <tl-account></tl-account>
+            <tl-actions></tl-actions>
+            <tl-stocks></tl-stocks>
         </main>
         <footer>
             <h6>HeartBank®</h6>

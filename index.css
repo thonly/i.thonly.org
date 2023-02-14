@@ -1,0 +1,11 @@
+html {
+	font-size: medium;
+}
+
+header, main {
+	display: none;
+}
+
+footer {
+	text-align: center;
+}
