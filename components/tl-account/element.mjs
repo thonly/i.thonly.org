@@ -8,7 +8,7 @@ class TlAccount extends HTMLElement {
     }
 
     render(account) {
-
+        console.log(account)
     }
 }
 

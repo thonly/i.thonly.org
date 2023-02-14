@@ -8,7 +8,7 @@ class TlStocks extends HTMLElement {
     }
 
     render(stocks) {
-
+        console.log(stocks)
     }
 }
 

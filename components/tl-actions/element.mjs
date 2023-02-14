@@ -8,7 +8,7 @@ class TlActions extends HTMLElement {
     }
 
     render({ account, stocks }) {
-
+        console.log(account, stocks)
     }
 }
 
