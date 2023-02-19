@@ -43,6 +43,10 @@ class TlProvider extends HTMLBodyElement {
         } else await this.#connect();
     }
 
+    async #refresh() {
+        
+    }
+
     async #render() {
         const tda = new TDA();
         const data = await tda.getAccount2(document.body.querySelector('main').dataset.account);
