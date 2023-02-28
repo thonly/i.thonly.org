@@ -40,7 +40,9 @@ class TlProvider extends HTMLBodyElement {
 
         const credentials = await response.json();
         if (credentials.personal) {
+            //localStorage.setItem('credentials', JSON.stringify(credentials));
             sessionStorage.setItem('credentials', JSON.stringify(credentials));
+            this.#tda = new TDA();
             await this.#render();
         } else await this.#connect();
     }
