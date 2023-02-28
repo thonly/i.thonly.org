@@ -1,17 +1,19 @@
-import { ORIGIN } from "/global.mjs";
+import { ORIGIN } from "https://stocks.thonly.org/global.mjs";
 import TDA from "https://stocks.thonly.org/library/TDA.mjs";
 
 class TlProvider extends HTMLBodyElement {
+    #tda = new TDA();
+
     constructor() {
         super();
     }
 
     connectedCallback() {
-        if (localStorage.getItem('credentials')) {
-            this.#render();
-        } else {
+        if (this.#tda.hasExpired()) {
             document.body.querySelector('button').onclick = event => this.#connect(event.target);
             document.body.querySelector('header').style.display = 'block';
+        } else {
+            this.#render();
         }
     }
 
@@ -48,8 +50,7 @@ class TlProvider extends HTMLBodyElement {
     }
 
     async #render() {
-        const tda = new TDA();
-        const data = await tda.getAccount2(document.body.querySelector('main').dataset.account);
+        const data = await this.#tda.getAccount2(document.body.querySelector('main').dataset.account);
         document.body.querySelector('tl-account').render(data.account);
         document.body.querySelector('tl-actions').render(data);
         document.body.querySelector('tl-stocks').render(data.stocks);

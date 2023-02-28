@@ -1,4 +1,4 @@
-import { THON } from '/global.mjs';
+import { THON } from 'https://stocks.thonly.org/global.mjs';
 const template = document.createElement("template");
 
 template.innerHTML = `
