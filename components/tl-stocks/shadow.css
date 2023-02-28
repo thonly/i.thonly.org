@@ -1,4 +1,13 @@
 :host {
 	font-size: medium;
+	text-align: center;
 }
 
+#value {
+	color: blue;
+}
+
+legend {
+    font-size: xx-large;
+	font-weight: bold;
+}

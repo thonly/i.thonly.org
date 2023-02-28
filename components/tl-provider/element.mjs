@@ -10,7 +10,7 @@ class TlProvider extends HTMLBodyElement {
 
     connectedCallback() {
         if (this.#tda.hasExpired()) {
-            document.body.querySelector('button').onclick = event => this.#connect(event.target);
+            document.body.querySelector('header button').onclick = event => this.#connect(event.target);
             document.body.querySelector('header').style.display = 'block';
         } else {
             this.#render();
@@ -40,7 +40,7 @@ class TlProvider extends HTMLBodyElement {
 
         const credentials = await response.json();
         if (credentials.personal) {
-            localStorage.setItem('credentials', JSON.stringify(credentials));
+            sessionStorage.setItem('credentials', JSON.stringify(credentials));
             await this.#render();
         } else await this.#connect();
     }
@@ -57,6 +57,7 @@ class TlProvider extends HTMLBodyElement {
 
         document.body.querySelector('header').style.display = 'none';
         document.body.querySelector('main').style.display = 'block';
+        document.body.querySelector('footer button').onclick = event => document.location.reload();
     }
 }
 
