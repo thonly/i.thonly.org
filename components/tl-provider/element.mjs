@@ -45,10 +45,6 @@ class TlProvider extends HTMLBodyElement {
         } else await this.#connect();
     }
 
-    async #refresh() {
-        
-    }
-
     async #render() {
         const data = await this.#tda.getAccount2(document.body.querySelector('main').dataset.account);
         document.body.querySelector('tl-account').render(data.account);
@@ -57,7 +53,7 @@ class TlProvider extends HTMLBodyElement {
 
         document.body.querySelector('header').style.display = 'none';
         document.body.querySelector('main').style.display = 'block';
-        document.body.querySelector('footer button').onclick = event => document.location.reload();
+        document.body.querySelector('footer button').onclick = event => window.location = '/';
     }
 }
 
