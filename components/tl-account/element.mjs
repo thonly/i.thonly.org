@@ -7,8 +7,9 @@ class TlAccount extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
-    render(account) {
-        console.log(account)
+    render(type, account) {
+        console.log(account);
+        this.shadowRoot.getElementById('title').textContent = `${type}'s Stocks`;
     }
 }
 

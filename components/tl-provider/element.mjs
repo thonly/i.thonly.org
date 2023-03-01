@@ -48,14 +48,15 @@ class TlProvider extends HTMLBodyElement {
     }
 
     async #render() {
-        const data = await this.#tda.getAccount2(document.body.querySelector('main').dataset.account);
-        document.body.querySelector('tl-account').render(data.account);
+        const type = document.body.querySelector('main').dataset.account;
+        const data = await this.#tda.getAccount2(type);
+        document.body.querySelector('tl-account').render(type, data.account);
         document.body.querySelector('tl-actions').render(data);
         document.body.querySelector('tl-stocks').render(data.stocks);
 
         document.body.querySelector('header').style.display = 'none';
         document.body.querySelector('main').style.display = 'block';
-        document.body.querySelector('footer button').onclick = event => window.location = '/';
+        document.body.querySelector('footer button').onclick = event => this.#render();
     }
 }
 
