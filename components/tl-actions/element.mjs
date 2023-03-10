@@ -1,5 +1,4 @@
 import template from './template.mjs';
-import { formatToDollars } from "https://stocks.thonly.org/library/utils.mjs";
 
 class TlActions extends HTMLElement {
     constructor() {
@@ -8,17 +7,18 @@ class TlActions extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
-    render({ account, stocks }) {
-        console.log(account, stocks);
-        this.shadowRoot.getElementById('value').textContent = formatToDollars(this.#sum(stocks));
-    }
+    render(type, { account, stocks }) {
+        this.#select(stocks);
+        this.shadowRoot.querySelector('main').style.display = type === 'mom' ? 'none' : 'block';
+    } 
 
-    #sum(stocks) {
-        let total = 0;
+    #select(stocks) {
+        const select = this.shadowRoot.querySelector('select');
         for (let stock in stocks) {
-            total += stocks[stock].position ? stocks[stock].position.marketValue : 0;
+            const option = document.createElement('option');
+            option.textContent = stock;
+            select.append(option);
         }
-        return total;
     }
 }
 

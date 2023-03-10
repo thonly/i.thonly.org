@@ -1,8 +1,8 @@
 :host {
 	font-size: medium;
-	text-align: center;
 }
 
-h1 {
-	color: blue;
+main {
+	display: none;
+	text-align: center;
 }

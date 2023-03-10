@@ -50,8 +50,10 @@ class TlProvider extends HTMLBodyElement {
     async #render() {
         const type = document.body.querySelector('main').dataset.account;
         const data = await this.#tda.getAccount2(type);
-        document.body.querySelector('tl-account').render(type, data.account);
-        document.body.querySelector('tl-actions').render(data);
+        console.log(type, data);
+        
+        document.body.querySelector('tl-account').render(type, data);
+        document.body.querySelector('tl-actions').render(type, data);
         document.body.querySelector('tl-stocks').render(data.stocks);
 
         document.body.querySelector('header').style.display = 'none';
